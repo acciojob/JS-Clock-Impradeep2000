@@ -1,14 +1,17 @@
-//your code here
-setInterval(()=>{
-let hour = new Date().getHours();
-let min = new Date().getMinutes();
-let sec = new Date().getSeconds();
-
-let hourHand = ((30*hour) + (min/2) + 90);
-let minHand = (6 * min + 90);
-let secHand = (6 * sec);
-
-document.getElementsByClassName("hour-hand")[0].style.transform = `rotate(${hourHand}deg)`;
-document.getElementsByClassName("min-hand")[0].style.transform = `rotate(${minHand}deg)`;
-document.getElementsByClassName("second-hand")[0].style.transform = `rotate(${secHand}deg)`;
-},1000);
+let hourHand = document.getElementsByClassName("hour-hand")[0];
+let minuteHand = document.getElementsByClassName("min-hand")[0];
+let secondHand = document.getElementsByClassName("second-hand")[0];
+setInterval(() => {
+    let date = new Date();
+    let currentHour = date.getHours();
+    let currentMinute = date.getMinutes();
+    let currentSecond = date.getSeconds();
+    // console.log(currentHour, ":", currentMinute," : ", currentSecond)
+    let hourHandRotation = currentHour*30 + currentMinute/2;
+    let minuteHandRotation = currentMinute*6;
+    let secondHandRotation = currentSecond*6;
+    //console.log(hourHandRotation, ":", minuteHandRotation," : ", secondHandRotation);
+    hourHand.style.transform = `rotate(${90+hourHandRotation}deg)`
+    minuteHand.style.transform = `rotate(${90+minuteHandRotation}deg)`
+    secondHand.style.transform = `rotate(${90+secondHandRotation}deg)`
+}, 1000);
